@@ -49,20 +49,28 @@ class LevelMeter
         set_noise_default();
     }
 
-    // min - min value of the meter (int or float)
+    // min     - min value of the meter (int or float)
+    // returns - false if min is the same as current, else true
     // (consider calling set_noise_default() after this)
     function set_min(min) {
+        if (min == my_min)
+            return false;
         _update_range(min, my_max);
         my_min = min;
         _update_level();
+        return true;
     }
 
-    // max - max value of the meter (int or float)
+    // max     - max value of the meter (int or float)
+    // returns - false if max is the same as current, else true
     // (consider calling set_noise_default() after this)
     function set_max(max) {
+        if (max == my_max)
+            return false;
         _update_range(my_min, max);
         my_max = max;
         _update_level();
+        return true;
     }
 
     // calculate and set the half-open range based on min and max
