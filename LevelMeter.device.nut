@@ -99,6 +99,11 @@ class LevelMeter
         return difference;
     }
 
+    // returns - the current level as a fraction between 0.0 and 1.0 inclusive
+    function get_cur_level_frac() {
+        return (my_cur_level - my_min).tofloat() / (my_max - my_min);
+    }
+
     // noise - the amount by which the new_level must change in
     //         order to be registered by the level meter
     //         (defaulted to 1/2 of an LED bar in constructor())
